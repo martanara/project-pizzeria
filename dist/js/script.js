@@ -379,6 +379,10 @@
       thisCart.dom.productList.addEventListener('updated', function(){
         thisCart.update();
       });
+
+      thisCart.dom.productList.addEventListener('remove', function(event){
+        thisCart.remove(event.detail.cartProduct);
+      });
     }
 
     add(menuProduct){
@@ -405,10 +409,7 @@
       let totalNumber = 0;
       let subtotalPrice = 0;
 
-      console.log('products', thisCart.products);
-
       for(let product of thisCart.products){
-        console.log('product', product.id);
         totalNumber += product.amount;
         subtotalPrice += product.price;
       }
@@ -423,7 +424,14 @@
         thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
         thisCart.dom.totalPriceBottom.innerHTML = thisCart.totalPrice;
       }
-      //console.log('total', thisCart.totalPrice);
+    }
+
+    remove(cartProduct){
+      const thisCart = this;
+
+      thisCart.products.splice(thisCart.products.indexOf(cartProduct), 1);
+      thisCart.update();
+      cartProduct.dom.wrapper.remove();
     }
   }
 
@@ -438,6 +446,7 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
     }
 
     getElements(element){
@@ -462,6 +471,32 @@
         thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
+    }
+
+    remove(){
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
+
+    initActions(){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom.edit.addEventListener('click', function(event){
+        event.preventDefault();
+      });
+
+      thisCartProduct.dom.remove.addEventListener('click', function(event){
+        event.preventDefault();
+        thisCartProduct.remove();
+      });
+
     }
   }
 
