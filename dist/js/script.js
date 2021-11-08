@@ -490,6 +490,7 @@
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
       thisCartProduct.price = menuProduct.price;
+      thisCartProduct.params = menuProduct.params;
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
@@ -549,16 +550,13 @@
     getData(){
       const thisCartProduct = this;
 
-      const product = [];
+      const product = {};
 
       product.id = thisCartProduct.id;
       product.amount = thisCartProduct.amountWidget.value;
       product.priceSingle = thisCartProduct.priceSingle;
       product.price = thisCartProduct.price;
       product.params = thisCartProduct.params;
-
-      //console.log(thisCartProduct);
-      //console.log(product);
 
       return product;
     }
@@ -584,7 +582,6 @@
           return rawResponse.json();
         })
         .then(function(parsedResponse){
-          //console.log('parsedResponse', parsedResponse);
 
           /* save parsedResponse as thisApp.data.products */
 
@@ -593,8 +590,6 @@
           /* execute initMenu method */
           thisApp.initMenu();
         });
-
-      //console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
     initCart: function(){
       const thisApp = this;
