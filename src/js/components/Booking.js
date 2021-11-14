@@ -11,28 +11,42 @@ class Booking {
   }
   render(bookingWidget){
     const thisBooking = this;
-    const bookingTemplate = templates.bookingWidget();
-    const generatedDOM = utils.createDOMFromHTML(bookingTemplate);
+
+    const generatedHTML = templates.bookingWidget();
 
     thisBooking.dom = {};
-
     thisBooking.dom.wrapper = bookingWidget;
-    thisBooking.dom.peopleAmount = generatedDOM.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = generatedDOM.querySelector(select.booking.hoursAmount);
-
-    thisBooking.dom.wrapper.innerHTML = bookingTemplate;
+    thisBooking.dom.wrapper.innerHTML = generatedHTML;
+    thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
   }
   initWidgets(){
     const thisBooking = this;
-
     thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
-
-    thisBooking.dom.peopleAmount.addEventListener('update', function(){
+    thisBooking.dom.peopleAmount.addEventListener('updated',function(event){
+      event.preventDefault();
+    });
+    thisBooking.dom.hoursAmount.addEventListener('updated',function(event){
+      event.preventDefault();
     });
 
-    thisBooking.dom.hoursAmount.addEventListener('update', function(){
+
+
+    /* const thisBooking = this;
+
+    thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
+    console.log('thisBooking.peopleAmountWidget', thisBooking.peopleAmountWidget)
+    thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
+    console.log('thisBooking.hoursAmountWidget', thisBooking.hoursAmountWidget)
+    thisBooking.dom.peopleAmount.addEventListener('updated', function(event){
+      event.preventDeafult();
     });
+
+    thisBooking.dom.hoursAmount.addEventListener('update', function(event){
+      event.preventDeafult();
+    });
+    */
   }
 }
 
