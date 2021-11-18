@@ -146,9 +146,13 @@ class Booking {
   initTables(table){
     const thisBooking = this;
 
-    if(table.classList.contains('table') && !table.classList.contains(classNames.booking.tableBooked)){
+    const isTable = table.classList.contains('table');
+    const isTableBooked = table.classList.contains(classNames.booking.tableBooked);
+    const isTableSelected = table.classList.contains(classNames.booking.tableSelected);
 
-      if(!table.classList.contains(classNames.booking.tableSelected)){
+    if(isTable && !isTableBooked){
+
+      if(!isTableSelected){
         thisBooking.resetTables();
         thisBooking.selectedTable = null;
         table.classList.add(classNames.booking.tableSelected);
@@ -158,7 +162,7 @@ class Booking {
         thisBooking.selectedTable = null;
       }
 
-    } else if (table.classList.contains(classNames.booking.tableBooked)){
+    } else if (isTableBooked){
       window.alert('This table is already booked');
     }
   }
