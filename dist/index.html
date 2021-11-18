@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +64,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -69,6 +74,103 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+
+    <script id="template-home-page" type="text/x-handlebars-template">
+    <div class="container home__container">
+        <div class="home__header">
+          <div class= "row tiles">
+            <div class="tile flex-1 img-1">
+              <a href="#order">Order Online</a>
+              <p>Delicious food delivered to your door</p>
+            </div>
+            <div class="tile flex-1 img-2">
+              <a href="#booking">Book a Table</a>
+              <p>Enjoy a meal with friends and family</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="opening-hours flex-1 col">
+              <h2>Opening Hours</h2>
+              <p>MON - SUN, 12PM - 11PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Amazing service!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Margaret Osborne</p>
+            </div>
+          </div>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Delicious food!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Kate Nowak</p>
+            </div>
+          </div>
+          <div class="carousel-cell row">
+            <div class="carousel-img">
+              <img src="images/home/pizza-3.jpg" alt="">
+            </div>
+            <div class="carousel-quote col">
+              <h3>Great atmosphere!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Massa sapien faucibus et molestie ac.
+              </p>
+              <p>- Philip Smith</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="row">
+            <div class="element flex-1 img-4">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-5">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-6">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="element flex-1 img-7">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-8">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+            <div class="element flex-1 img-9">
+              <a href="#"><i class="fas fa-heart"></i></a>
+              <a href="#"><i class="fas fa-share-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <a href="#">View more on Intagram</a>
+        </div>
+      </div>
+    </script>
 
     <script id="template-cart-product" type="text/x-handlebars-template">
       <li>
@@ -244,6 +346,7 @@
     </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>
